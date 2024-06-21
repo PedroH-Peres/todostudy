@@ -8,8 +8,8 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text("To-do & Study", style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),),
-        backgroundColor: Color(0xFFF7A9F9),
-        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: const Color(0xFFF7A9F9),
+        iconTheme: const IconThemeData(color: Colors.white),
         leading: Builder(
         builder: (BuildContext context) {
           return IconButton(
@@ -26,7 +26,17 @@ class Homepage extends StatelessWidget {
       ),
       drawer: const Drawer(),
 
-      body: const Center(child: Text("Homepage"),),
+      body: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          children: [
+            const Text("Today", style: TextStyle(fontSize: 20),),
+            Container(color: Colors.cyanAccent, height: 35,),
+            const Text("Activities", style: TextStyle(fontSize: 16),),
+            Expanded(child: Container(color: Colors.cyanAccent,))
+          ],
+        ),
+      )
     );
   }
 }

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todostudy/pages/home_page.dart';
-import 'package:todostudy/pages/login_page.dart';
 
 void main() {
   runApp(const TodoApp());
