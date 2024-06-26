@@ -10,21 +10,33 @@ class MyDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       child: SafeArea(
-        child: Column(
+        child: ListView(
+          padding: EdgeInsets.zero,
           children: [
-            const Text("Todo Study"),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>const Homepage()));
-              },
-              child: const Text("Home"),
+            const DrawerHeader(
+              margin: EdgeInsets.zero,
+              decoration: BoxDecoration(color: Color(0xFFF7A9F9)),
+                child: Text(
+              "Todo Study",
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              textAlign: TextAlign.center,
+            )),
+            ListTile(
+              shape: const Border(
+                  bottom: BorderSide(color: Colors.grey),
+                  top: BorderSide(color: Colors.grey)),
+              title: const Text("Home"),
+              leading: const Icon(Icons.home),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => const Homepage())),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_)=>const TaskListPage()));
-              },
-              child: const Text("Task List"),
-            ),
+            ListTile(
+              shape: const Border(bottom: BorderSide(color: Colors.grey)),
+              title: const Text("Task List"),
+              leading: const Icon(Icons.list),
+              onTap: () => Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (_) => const TaskListPage())),
+            )
           ],
         ),
       ),
