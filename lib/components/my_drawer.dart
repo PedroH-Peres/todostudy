@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:todostudy/pages/home_page.dart';
-import 'package:todostudy/pages/taskList_page.dart';
+import 'package:todostudy/pages/tasklist_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
