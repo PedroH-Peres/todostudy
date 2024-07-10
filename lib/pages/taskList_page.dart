@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todostudy/components/my_drawer.dart';
+import 'package:todostudy/pages/form_page.dart';
 
 class TaskListPage extends StatelessWidget {
   const TaskListPage({super.key});
@@ -9,7 +10,17 @@ class TaskListPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(),
       drawer: const MyDrawer(),
-      body: const Center(child: Text("Task List Page"),),
+      body: Center(
+        child: Column(children: [
+          const Text("Task List Page"),
+          TextButton(
+            onPressed: (){
+              Navigator.of(context).push(MaterialPageRoute(builder: (_)=>const FormPage()));
+            },
+            child: const Text("Create"),
+          )
+        ]),
+      ),
     );
   }
 }
