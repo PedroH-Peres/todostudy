@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:mobx/mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:todostudy/components/my_drawer.dart';
+import 'package:todostudy/models/task.dart';
+import 'package:todostudy/store/tasklist.store.dart';
 
 class Homepage extends StatelessWidget {
   const Homepage({super.key});
-
+  
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -29,6 +35,7 @@ class Homepage extends StatelessWidget {
           ),
         ),
         drawer: MyDrawer(),
+
         body: Padding(
           padding: const EdgeInsets.all(8),
           child: Column(
@@ -61,9 +68,9 @@ class Homepage extends StatelessWidget {
                 ),
               ),
               const SizedBox(height: 10,),
-              const Text(
+              Text(
                 "Today",
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
               const Text(
                 "Activities",
