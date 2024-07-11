@@ -7,11 +7,12 @@ import 'package:todostudy/models/task.dart';
 import 'package:todostudy/store/tasklist.store.dart';
 
 class Homepage extends StatelessWidget {
-  const Homepage({super.key});
-  
+  Homepage({super.key});
+
   @override
   Widget build(BuildContext context) {
-    
+    final taskStore = Provider.of<TaskListStore>(context);
+
     return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -35,42 +36,46 @@ class Homepage extends StatelessWidget {
           ),
         ),
         drawer: MyDrawer(),
-
         body: Padding(
-          padding: const EdgeInsets.all(8),
+          padding:
+              const EdgeInsets.only(top: 10, bottom: 16, left: 10, right: 10),
           child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(5),
-                color: const Color.fromARGB(255, 207, 205, 205),
-                child: Column(
-                  children: [
-                    Container(
-                      height: 120,
-                      padding: const EdgeInsets.all(10),
-                      width: MediaQuery.of(context).size.width,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text("Today's Tasks: "),
-                        Container(
-                          height: 12,
-                          width: MediaQuery.of(context).size.width * 1.8 / 3,
-                          decoration: BoxDecoration(
-                              color: Colors.blueAccent,
-                              borderRadius: BorderRadius.circular(5)),
-                        ),
-                        const Text(" 0%")
-                      ],
-                    )
-                  ],
+              Card(
+                color: const Color.fromARGB(255, 232, 232, 232),
+                child: Container(
+                  padding: const EdgeInsets.all(5),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 120,
+                        padding: const EdgeInsets.all(10),
+                        width: MediaQuery.of(context).size.width,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text("Today's Tasks: "),
+                          Container(
+                            height: 12,
+                            width: MediaQuery.of(context).size.width * 1.8 / 3,
+                            decoration: BoxDecoration(
+                                color: Colors.blueAccent,
+                                borderRadius: BorderRadius.circular(5)),
+                          ),
+                          const Text(" 0%")
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-              const SizedBox(height: 10,),
-              Text(
+              const SizedBox(
+                height: 10,
+              ),
+              const Text(
                 "Today",
-                style: const TextStyle(fontSize: 16),
+                style: TextStyle(fontSize: 12),
               ),
               const Text(
                 "Activities",
@@ -78,7 +83,24 @@ class Homepage extends StatelessWidget {
               ),
               Expanded(
                   child: Container(
-                color: Colors.cyanAccent,
+                padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(12),
+                  color: const Color.fromARGB(255, 232, 232, 232),
+                ),
+                child: ListView.builder(
+                    itemCount: taskStore.taskList.length,
+                    itemBuilder: (context, index) {
+                      return Card(
+                        child: ListTile(
+                          title: Text(taskStore.taskList[index].title),
+                          leading: const Icon(
+                            Icons.check_circle_outline,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      );
+                    }),
               )),
             ],
           ),

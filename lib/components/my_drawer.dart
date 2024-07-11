@@ -27,14 +27,14 @@ class MyDrawer extends StatelessWidget {
               title: const Text("Home"),
               leading: const Icon(Icons.home),
               onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const Homepage())),
+                  MaterialPageRoute(builder: (_) => Homepage())),
             ),
             ListTile(
               shape: const Border(bottom: BorderSide(color: Colors.grey)),
               title: const Text("Task List"),
               leading: const Icon(Icons.list),
               onTap: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(builder: (_) => const TaskListPage())),
+                  MaterialPageRoute(builder: (_) => TaskListPage())),
             )
           ],
         ),
