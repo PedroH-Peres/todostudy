@@ -80,7 +80,7 @@ class _FormPageState extends State<FormPage> {
                         timer: isChecked,
                         repetition: ["SEG"]),
                   );
-                  print(taskStore.taskList);
+                  Navigator.of(context).pop();
                 },
                 child: Text("Save"))
           ],
