@@ -16,10 +16,31 @@ class _TaskListPageState extends State<TaskListPage> {
   Widget build(BuildContext context) {
     final taskStore = Provider.of<TaskListStore>(context);
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          title: const Text(
+            "Task List",
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          ),
+          backgroundColor: const Color(0xFFF7A9F9),
+          iconTheme: const IconThemeData(color: Colors.white),
+          leading: Builder(
+            builder: (BuildContext context) {
+              return IconButton(
+                icon: const Icon(
+                  Icons.menu,
+                ),
+                onPressed: () {
+                  Scaffold.of(context).openDrawer();
+                },
+                tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+              );
+            },
+          ),
+        ),
       drawer: const MyDrawer(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color(0xFFF7A9F9),
         child: const Icon(Icons.add_task),
         onPressed: () {
           Navigator.of(context)
@@ -28,11 +49,19 @@ class _TaskListPageState extends State<TaskListPage> {
         },
       ),
       body: Container(
-        padding: const EdgeInsets.all(8),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 24),
         width: MediaQuery.of(context).size.width,
         height: MediaQuery.of(context).size.height,
         child: Column(children: [
-          const Text("Task List Page"),
+          const Text(
+            "Week Tasks",
+            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(
+            height: 6,
+          ),
+          Container(child: const Text("Weekday: All"),),
+          const SizedBox(height: 10,),
           Expanded(
               child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 8),
@@ -47,10 +76,12 @@ class _TaskListPageState extends State<TaskListPage> {
                     child: ListTile(
                       title: Text(taskStore.taskList[index].title),
                       leading: Text(
-                        (index+1).toString(),
-                        style: const TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                        (index + 1).toString(),
+                        style: const TextStyle(
+                            color: Colors.grey, fontWeight: FontWeight.bold),
                       ),
-                      trailing: IconButton(onPressed: (){}, icon: const Icon(Icons.delete)), 
+                      trailing: IconButton(
+                          onPressed: () {}, icon: const Icon(Icons.delete)),
                     ),
                   );
                 }),
