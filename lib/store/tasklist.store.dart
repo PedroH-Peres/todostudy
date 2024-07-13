@@ -8,7 +8,92 @@ class TaskListStore = _TaskListStore with _$TaskListStore;
 abstract class _TaskListStore with Store{
 
   @observable
-  ObservableList<Task> taskList = ObservableList<Task>.of([]);
+  ObservableList<Task> taskList = ObservableList<Task>.of([
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG", "TER", "DOM"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+    Task(
+      title: "Titulo 1",
+      description: "Descricao 1",
+      timer: false,
+      repetition: ["SEG"]
+    ),
+  ]);
 
   @observable
   int taskQtt = 0;

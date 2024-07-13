@@ -58,7 +58,7 @@ class Homepage extends StatelessWidget {
                           const Text("Today's Tasks: "),
                           Container(
                             height: 12,
-                            width: MediaQuery.of(context).size.width * 1.8 / 3,
+                            width: MediaQuery.of(context).size.width * 1.6 / 3,
                             decoration: BoxDecoration(
                                 color: Colors.blueAccent,
                                 borderRadius: BorderRadius.circular(5)),
@@ -98,6 +98,12 @@ class Homepage extends StatelessWidget {
                             Icons.check_circle_outline,
                             color: Colors.grey,
                           ),
+                          subtitleTextStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                          subtitle: Row(children: [
+                            for(int i = 0; i < taskStore.taskList[index].repetition.length; i++)
+                              Text("${taskStore.taskList[index].repetition[i]}  "),
+
+                          ],),
                         ),
                       );
                     }),
