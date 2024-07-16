@@ -81,7 +81,10 @@ class _TaskListPageState extends State<TaskListPage> {
                             color: Colors.grey, fontWeight: FontWeight.bold),
                       ),
                       trailing: IconButton(
-                          onPressed: () {}, icon: const Icon(Icons.delete)),
+                          onPressed: () {
+                            taskStore.removeTaskbyIndex(index);
+                            setState(() {});
+                          }, icon: const Icon(Icons.delete)),
                     ),
                   );
                 }),

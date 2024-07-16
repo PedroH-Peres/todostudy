@@ -56,6 +56,17 @@ mixin _$TaskListStore on _TaskListStore, Store {
   }
 
   @override
+  void removeTaskbyIndex(int i) {
+    final _$actionInfo = _$_TaskListStoreActionController.startAction(
+        name: '_TaskListStore.removeTaskbyIndex');
+    try {
+      return super.removeTaskbyIndex(i);
+    } finally {
+      _$_TaskListStoreActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
   String toString() {
     return '''
 taskList: ${taskList},

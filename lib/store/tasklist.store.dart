@@ -103,4 +103,10 @@ abstract class _TaskListStore with Store{
     taskList.add(task);
     taskQtt++;
   }
+
+  @action
+  void removeTaskbyIndex(int i){
+    taskList.remove(taskList[i]);
+    taskQtt--;
+  }
 }
