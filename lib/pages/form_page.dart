@@ -56,6 +56,16 @@ class _FormPageState extends State<FormPage> {
                             borderSide:
                                 BorderSide(width: 0.5, color: Colors.grey))),
                   ),
+                  const Row(children: [
+                    Text("Week Days: "),
+                    TextButton(onPressed: null,child: Text("SEG"),),
+                    TextButton(onPressed: null,child: Text("TER"),),
+                    TextButton(onPressed: null,child: Text("QUA"),),
+                    TextButton(onPressed: null,child: Text("QUI"),),
+                    TextButton(onPressed: null,child: Text("SEX"),),
+                    TextButton(onPressed: null,child: Text("SAB"),),
+                    TextButton(onPressed: null,child: Text("DOM"),),
+                  ]),
                   Row(
                     children: [
                       Text("Timer: "),
