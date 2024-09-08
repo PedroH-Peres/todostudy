@@ -16,6 +16,9 @@ class _FormPageState extends State<FormPage> {
   final TextEditingController _descriptionController = TextEditingController();
   bool isChecked = false;
 
+  final days = ["SEG", "TER", "QUA", "QUI", "SEX", "SAB", "DOM"];
+  List<String> repetition = [];
+
   @override
   Widget build(BuildContext context) {
     final taskStore = Provider.of<TaskListStore>(context);
@@ -56,19 +59,36 @@ class _FormPageState extends State<FormPage> {
                             borderSide:
                                 BorderSide(width: 0.5, color: Colors.grey))),
                   ),
-                  const Row(children: [
-                    Text("Week Days: "),
-                    TextButton(onPressed: null,child: Text("SEG"),),
-                    TextButton(onPressed: null,child: Text("TER"),),
-                    TextButton(onPressed: null,child: Text("QUA"),),
-                    TextButton(onPressed: null,child: Text("QUI"),),
-                    TextButton(onPressed: null,child: Text("SEX"),),
-                    TextButton(onPressed: null,child: Text("SAB"),),
-                    TextButton(onPressed: null,child: Text("DOM"),),
+                  SizedBox(height: 8,),
+                  Row(children: [
+                    const Text("Week Days: "),
+                    for (int i = 0; i < 7; i++)
+                      TextButton(
+                        style: ButtonStyle(backgroundColor: WidgetStateProperty.all(repetition.contains(days[i]) ?Colors.deepPurple : Colors.white)),
+                        onPressed: () {
+                          setState(() {
+                            if (repetition.contains(days[i])) {
+                              repetition.remove(days[i]);
+                            } else {
+                              repetition.add(days[i]);
+                            }
+                          });
+                        },
+                        child: Text(
+                          days[i],
+                          style: TextStyle(
+                              color: repetition.contains(days[i])
+                                  ? Colors.white
+                                  : Colors.deepPurple,
+                              fontWeight: repetition.contains(days[i])
+                                  ? FontWeight.bold
+                                  : FontWeight.normal),
+                        ),
+                      )
                   ]),
                   Row(
                     children: [
-                      Text("Timer: "),
+                      const Text("Timer: "),
                       Checkbox(
                           value: isChecked,
                           onChanged: (v) {
@@ -88,11 +108,11 @@ class _FormPageState extends State<FormPage> {
                         title: _titleController.text,
                         description: _descriptionController.text,
                         timer: isChecked,
-                        repetition: ["SEG"]),
+                        repetition: repetition),
                   );
                   Navigator.of(context).pop();
                 },
-                child: Text("Save"))
+                child: const Text("Save"))
           ],
         ),
       ),
