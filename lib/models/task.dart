@@ -1,6 +1,8 @@
 class Task {
   //Atributos de uma task
   String title;
+  bool isCompleted = false;
+  DateTime? completionDate;
   DateTime? duration;
   String description;
   bool timer = false;
@@ -10,6 +12,18 @@ class Task {
 
   //Construtor
   Task({required this.title, this.duration, required this.description, required this.timer, required this.repetition});
+
+  void markCompleteButton(DateTime day){
+    if(isCompleted){
+      completionDate = null;
+      isCompleted = false;
+      completionQuantity--;
+    }else{
+      isCompleted = true;
+      completionDate = day;
+      completionQuantity++;
+    }
+  }
 
   //Metodos get
   String get getTitle{

@@ -6,9 +6,14 @@ import 'package:todostudy/components/my_drawer.dart';
 import 'package:todostudy/models/task.dart';
 import 'package:todostudy/store/tasklist.store.dart';
 
-class Homepage extends StatelessWidget {
+class Homepage extends StatefulWidget {
   Homepage({super.key});
 
+  @override
+  State<Homepage> createState() => _HomepageState();
+}
+
+class _HomepageState extends State<Homepage> {
   @override
   Widget build(BuildContext context) {
     final taskStore = Provider.of<TaskListStore>(context);
@@ -92,11 +97,18 @@ class Homepage extends StatelessWidget {
                     itemCount: taskStore.taskList.length,
                     itemBuilder: (context, index) {
                       Task task = taskStore.taskList[index];
-                      //Pensar na verificação se a task foi completa no dia ou nao
+                      if(task.completionDate?.day != DateTime.now().day || task.completionDate?.month != DateTime.now().month){
+                        task.isCompleted = false;
+                        task.completionDate = null;
+                      }
                       return Card(
                         child: ListTile(
                           title: Text(task.title),
-                          leading: IconButton(onPressed: (){}, icon: Icon(Icons.check_circle_outline, color: Colors.grey,)),
+                          leading: IconButton(onPressed: (){
+                            setState(() {
+                              task.markCompleteButton(DateTime.now());
+                            });
+                          }, icon: Icon(task.isCompleted ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompleted ? Colors.green: Colors.grey,)),
                           subtitleTextStyle: TextStyle(fontSize: 12, color: Colors.grey),
                           subtitle: Row(children: [
                             for(int i = 0; i < task.repetition.length; i++)
