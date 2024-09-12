@@ -59,7 +59,7 @@ class _FormPageState extends State<FormPage> {
                             borderSide:
                                 BorderSide(width: 0.5, color: Colors.grey))),
                   ),
-                  SizedBox(height: 8,),
+                  const SizedBox(height: 8,),
                   Row(children: [
                     const Text("Week Days: "),
                     for (int i = 0; i < 7; i++)

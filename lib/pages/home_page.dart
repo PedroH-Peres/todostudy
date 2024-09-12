@@ -91,17 +91,16 @@ class Homepage extends StatelessWidget {
                 child: ListView.builder(
                     itemCount: taskStore.taskList.length,
                     itemBuilder: (context, index) {
+                      Task task = taskStore.taskList[index];
+                      //Pensar na verificação se a task foi completa no dia ou nao
                       return Card(
                         child: ListTile(
-                          title: Text(taskStore.taskList[index].title),
-                          leading: const Icon(
-                            Icons.check_circle_outline,
-                            color: Colors.grey,
-                          ),
+                          title: Text(task.title),
+                          leading: IconButton(onPressed: (){}, icon: Icon(Icons.check_circle_outline, color: Colors.grey,)),
                           subtitleTextStyle: TextStyle(fontSize: 12, color: Colors.grey),
                           subtitle: Row(children: [
-                            for(int i = 0; i < taskStore.taskList[index].repetition.length; i++)
-                              Text("${taskStore.taskList[index].repetition[i]}  "),
+                            for(int i = 0; i < task.repetition.length; i++)
+                              Text("${task.repetition[i]}  "),
 
                           ],),
                         ),
