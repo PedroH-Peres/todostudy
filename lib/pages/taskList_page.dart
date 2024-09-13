@@ -94,7 +94,7 @@ class _TaskListPageState extends State<TaskListPage> {
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
-                                  Text("Tem certeza que deseja remover esta tarefa?"),
+                                  const Text("Tem certeza que deseja remover esta tarefa?"),
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [

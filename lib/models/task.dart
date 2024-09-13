@@ -2,7 +2,10 @@ class Task {
   //Atributos de uma task
   String title;
   bool isCompleted = false;
+  // Alterar para lista, contemplando todos os dias da semana
   DateTime? completionDate;
+  //List<DateTime>? completionDates = [];
+
   DateTime? duration;
   String description;
   bool timer = false;
