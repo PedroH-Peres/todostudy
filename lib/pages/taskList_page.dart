@@ -82,8 +82,33 @@ class _TaskListPageState extends State<TaskListPage> {
                       ),
                       trailing: IconButton(
                           onPressed: () {
-                            taskStore.removeTaskbyIndex(index);
-                            setState(() {});
+                            showDialog(context: context, builder: (_)=>Center(
+                              child: Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 4, vertical: 20),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(8)
+                                ),
+                                width: 350,
+                                height: 150,
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                  Text("Tem certeza que deseja remover esta tarefa?"),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                    TextButton(onPressed: (){
+                                      setState(() {taskStore.removeTaskbyIndex(index); Navigator.of(context).pop();});
+                                    }, child: const Text("Yes")),
+                                    const SizedBox(width: 10,),
+                                    TextButton(onPressed: (){
+                                      Navigator.of(context).pop();
+                                    }, child: const Text("No")),
+                                  ],)
+                                ],),
+                              ),
+                            ));
                           }, icon: const Icon(Icons.delete)),
                     ),
                   );

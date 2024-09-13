@@ -109,7 +109,7 @@ class _HomepageState extends State<Homepage> {
                               task.markCompleteButton(DateTime.now());
                             });
                           }, icon: Icon(task.isCompleted ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompleted ? Colors.green: Colors.grey,)),
-                          subtitleTextStyle: TextStyle(fontSize: 12, color: Colors.grey),
+                          subtitleTextStyle: const TextStyle(fontSize: 12, color: Colors.grey),
                           subtitle: Row(children: [
                             for(int i = 0; i < task.repetition.length; i++)
                               Text("${task.repetition[i]}  "),
