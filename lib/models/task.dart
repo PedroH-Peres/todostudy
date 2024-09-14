@@ -4,7 +4,7 @@ class Task {
   bool isCompleted = false;
   // Alterar para lista, contemplando todos os dias da semana
   DateTime? completionDate;
-  //List<DateTime>? completionDates = [];
+  //List<DateTime> completedDates = [];
 
   DateTime? duration;
   String description;
@@ -16,8 +16,17 @@ class Task {
   //Construtor
   Task({required this.title, this.duration, required this.description, required this.timer, required this.repetition});
 
+  bool isCompletedToday() {
+    DateTime today = DateTime.now();
+    return completionDate?.day == today.day && completionDate?.month == today.month;
+  }
+
+  bool isCompletedOnWeekDay(int weekDay) {
+    return completionDate?.weekday == weekDay;
+  }
+
   void markCompleteButton(DateTime day){
-    if(isCompleted){
+    if(isCompletedToday()){
       completionDate = null;
       isCompleted = false;
       completionQuantity--;

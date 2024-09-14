@@ -97,18 +97,16 @@ class _HomepageState extends State<Homepage> {
                     itemCount: taskStore.taskList.length,
                     itemBuilder: (context, index) {
                       Task task = taskStore.taskList[index];
-                      if(task.completionDate?.day != DateTime.now().day || task.completionDate?.month != DateTime.now().month){
-                        task.isCompleted = false;
-                        task.completionDate = null;
-                      }
                       return Card(
                         child: ListTile(
                           title: Text(task.title),
                           leading: IconButton(onPressed: (){
                             setState(() {
-                              task.markCompleteButton(DateTime.now());
+                              final now = DateTime.now();
+                              DateTime dateOnly = DateTime(now.year, now.month, now.day);
+                              task.markCompleteButton(dateOnly);
                             });
-                          }, icon: Icon(task.isCompleted ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompleted ? Colors.green: Colors.grey,)),
+                          }, icon: Icon(task.isCompletedToday() ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompletedToday() ? Colors.green: Colors.grey,)),
                           subtitleTextStyle: const TextStyle(fontSize: 12, color: Colors.grey),
                           subtitle: Row(children: [
                             for(int i = 0; i < task.repetition.length; i++)
