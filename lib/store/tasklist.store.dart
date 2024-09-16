@@ -13,13 +13,13 @@ abstract class _TaskListStore with Store{
       title: "Titulo 1",
       description: "Descricao 1",
       timer: false,
-      repetition: ["SEG", "TER", "DOM"]
+      repetition: "TER"
     ),
     Task(
       title: "Titulo 1",
       description: "Descricao 1",
       timer: false,
-      repetition: ["SEG"]
+      repetition: "SEG"
     ),
   ]);
 

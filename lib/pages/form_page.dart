@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:provider/provider.dart';
 import 'package:todostudy/models/task.dart';
 import 'package:todostudy/store/tasklist.store.dart';
@@ -103,13 +104,15 @@ class _FormPageState extends State<FormPage> {
             ),
             TextButton(
                 onPressed: () {
-                  taskStore.addTask(
-                    Task(
+                  for(var item in repetition){
+                    taskStore.addTask(
+                      Task(
                         title: _titleController.text,
                         description: _descriptionController.text,
                         timer: isChecked,
-                        repetition: repetition),
-                  );
+                        repetition: item),
+                    );
+                  }
                   Navigator.of(context).pop();
                 },
                 child: const Text("Save"))

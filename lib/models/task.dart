@@ -2,14 +2,13 @@ class Task {
   //Atributos de uma task
   String title;
   bool isCompleted = false;
-  // Alterar para lista, contemplando todos os dias da semana
+
   DateTime? completionDate;
   //List<DateTime> completedDates = [];
-
   DateTime? duration;
   String description;
   bool timer = false;
-  List repetition;
+  String repetition;
   int completionQuantity = 0;
   int minutes = 0;
 
@@ -63,7 +62,7 @@ class Task {
     
   }
 
-  List get getRepetition{
+  String get getRepetition{
     return repetition;
   }
 

@@ -40,7 +40,7 @@ class _HomepageState extends State<Homepage> {
             },
           ),
         ),
-        drawer: MyDrawer(),
+        drawer: const MyDrawer(),
         body: Padding(
           padding:
               const EdgeInsets.only(top: 10, bottom: 16, left: 10, right: 10),
@@ -100,19 +100,19 @@ class _HomepageState extends State<Homepage> {
                       return Card(
                         child: ListTile(
                           title: Text(task.title),
-                          leading: IconButton(onPressed: (){
+                          trailing: Text(task.isCompleted ? "Completed" : "Incomplete", style: TextStyle(fontSize: 16, color: task.isCompleted ? Colors.green : Colors.grey, fontWeight: task.isCompleted ? FontWeight.bold: FontWeight.normal ),),
+                          leading: IconButton(
+                            iconSize: 30,
+                            onPressed: (){
                             setState(() {
                               final now = DateTime.now();
                               DateTime dateOnly = DateTime(now.year, now.month, now.day);
                               task.markCompleteButton(dateOnly);
                             });
-                          }, icon: Icon(task.isCompletedToday() ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompletedToday() ? Colors.green: Colors.grey,)),
+                          }, icon: Icon(task.isCompletedToday() ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompletedToday() ? Colors.green: Colors.grey,),),
                           subtitleTextStyle: const TextStyle(fontSize: 12, color: Colors.grey),
-                          subtitle: Row(children: [
-                            for(int i = 0; i < task.repetition.length; i++)
-                              Text("${task.repetition[i]}  "),
-
-                          ],),
+                          
+                          subtitle: Text(task.repetition),
                         ),
                       );
                     }),
