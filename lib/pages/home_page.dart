@@ -4,6 +4,7 @@ import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:todostudy/components/my_drawer.dart';
 import 'package:todostudy/models/task.dart';
+import 'package:todostudy/pages/task_page.dart';
 import 'package:todostudy/store/tasklist.store.dart';
 
 class Homepage extends StatefulWidget {
@@ -98,21 +99,26 @@ class _HomepageState extends State<Homepage> {
                     itemBuilder: (context, index) {
                       Task task = taskStore.taskList[index];
                       return Card(
-                        child: ListTile(
-                          title: Text(task.title),
-                          trailing: Text(task.isCompleted ? "Completed" : "Incomplete", style: TextStyle(fontSize: 16, color: task.isCompleted ? Colors.green : Colors.grey, fontWeight: task.isCompleted ? FontWeight.bold: FontWeight.normal ),),
-                          leading: IconButton(
-                            iconSize: 30,
-                            onPressed: (){
-                            setState(() {
-                              final now = DateTime.now();
-                              DateTime dateOnly = DateTime(now.year, now.month, now.day);
-                              task.markCompleteButton(dateOnly);
-                            });
-                          }, icon: Icon(task.isCompletedToday() ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompletedToday() ? Colors.green: Colors.grey,),),
-                          subtitleTextStyle: const TextStyle(fontSize: 12, color: Colors.grey),
-                          
-                          subtitle: Text(task.repetition),
+                        child: GestureDetector(
+                          onTap: (){
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => TaskPage(task: task)));
+                          },
+                          child: ListTile(
+                            title: Text(task.title),
+                            trailing: Text(task.isCompleted ? "Completed" : "Incomplete", style: TextStyle(fontSize: 16, color: task.isCompleted ? Colors.green : Colors.grey, fontWeight: task.isCompleted ? FontWeight.bold: FontWeight.normal ),),
+                            leading: IconButton(
+                              iconSize: 30,
+                              onPressed: (){
+                              setState(() {
+                                final now = DateTime.now();
+                                DateTime dateOnly = DateTime(now.year, now.month, now.day);
+                                task.markCompleteButton(dateOnly);
+                              });
+                            }, icon: Icon(task.isCompletedToday() ? Icons.check_circle_rounded:Icons.check_circle_outline, color: task.isCompletedToday() ? Colors.green: Colors.grey,),),
+                            subtitleTextStyle: const TextStyle(fontSize: 12, color: Colors.grey),
+                            
+                            subtitle: Text(task.repetition),
+                          ),
                         ),
                       );
                     }),
