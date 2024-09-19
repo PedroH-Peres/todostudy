@@ -16,15 +16,33 @@ class TaskPage extends StatelessWidget {
         margin: const EdgeInsets.all(16),
         child: Column(
           children: [
-            Text(task.getTitle),
-            Text(task.repetition),
+            Row(
+              children: [
+                Expanded(
+                  child: Card(
+                      elevation: 2,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(children: [
+                          Text(
+                            task.getTitle,
+                            style: const TextStyle(
+                                fontWeight: FontWeight.w600, fontSize: 18),
+                          ),
+                          Text(task.repetition),
+                        ]),
+                      )),
+                ),
+              ],
+            ),
             const Divider(),
             Row(children: [
               Expanded(
                 child: Card(
                     elevation: 2,
                     child: Container(
-                        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -52,7 +70,8 @@ class TaskPage extends StatelessWidget {
                   child: Card(
                       elevation: 2,
                       child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
                           child: Column(
                             children: [
                               const Text(
@@ -74,7 +93,8 @@ class TaskPage extends StatelessWidget {
                   child: Card(
                       elevation: 2,
                       child: Container(
-                          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                          padding: const EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 15),
                           child: Column(
                             children: [
                               const Text(
