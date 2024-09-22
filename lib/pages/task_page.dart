@@ -63,6 +63,31 @@ class TaskPage extends StatelessWidget {
                         ))),
               ),
             ]),
+            if(task.timer)
+              Row(children: [
+              Expanded(
+                child: Card(
+                    elevation: 2,
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 10, horizontal: 15),
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                textAlign: TextAlign.center,
+                                "Timer",
+                                style: TextStyle(
+                                    fontSize: 18, fontWeight: FontWeight.w600),
+                              ),
+                            ),
+                            
+                          ],
+                        ))),
+              ),
+            ]),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
