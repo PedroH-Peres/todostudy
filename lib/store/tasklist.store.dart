@@ -15,12 +15,6 @@ abstract class _TaskListStore with Store{
       timer: false,
       repetition: "TER"
     ),
-    Task(
-      title: "Titulo 1",
-      description: "Descricao 1",
-      timer: false,
-      repetition: "SEG"
-    ),
   ]);
 
   @observable
