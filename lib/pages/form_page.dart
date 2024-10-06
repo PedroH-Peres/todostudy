@@ -36,6 +36,7 @@ class _FormPageState extends State<FormPage> {
               "New Task",
               style: TextStyle(fontSize: 24),
             ),
+            const SizedBox(height: 20),
             Form(
               key: _formKey,
               child: Column(
@@ -52,7 +53,7 @@ class _FormPageState extends State<FormPage> {
                     height: 8,
                   ),
                   TextFormField(
-                    maxLines: 5,
+                    maxLines: 6,
                     controller: _descriptionController,
                     decoration: const InputDecoration(
                         label: Text("Description"),
@@ -60,7 +61,7 @@ class _FormPageState extends State<FormPage> {
                             borderSide:
                                 BorderSide(width: 0.5, color: Colors.grey))),
                   ),
-                  const SizedBox(height: 8,),
+                  const SizedBox(height: 12,),
                   Row(children: [
                     const Text("Week Days: "),
                     for (int i = 0; i < 7; i++)
@@ -87,7 +88,9 @@ class _FormPageState extends State<FormPage> {
                         ),
                       )
                   ]),
+                  const SizedBox(height: 22,),
                   Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text("Timer: "),
                       Checkbox(
@@ -99,9 +102,12 @@ class _FormPageState extends State<FormPage> {
                           })
                     ],
                   ),
+                  if(isChecked)
+                    const Text("00:00", style: TextStyle(fontSize: 32),),
                 ],
               ),
             ),
+            const SizedBox(height: 25,),
             TextButton(
                 onPressed: () {
                   for(var item in repetition){
